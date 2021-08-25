@@ -3,6 +3,7 @@ import 'pages/home.screen.dart';
 import 'pages/text.screen.dart';
 import 'pages/image.screen.dart';
 import 'pages/icon.screen.dart';
+import 'pages/time.screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => HomeScreen(),
+        '/time': (context) => TimeScreen(),
         '/text': (context) => TextScreen(),
         '/image': (context) => ImageScreen(),
         '/icon': (context) => IconScreen(),

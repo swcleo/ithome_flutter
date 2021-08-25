@@ -4,14 +4,20 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text("Welcome To Flutter")),
-        body: Center(
-          child: _buildLists(context),
-        ));
+      appBar: AppBar(title: const Text("Welcome To Flutter")),
+      body: Center(
+        child: _buildLists(context),
+      ),
+    );
   }
 
   Widget _buildLists(BuildContext context) {
     List<Widget> items = [
+      ListTile(
+        title: Text('Time'),
+        subtitle: Text('StatefulWidget Example'),
+        onTap: () => Navigator.pushNamed(context, '/time'),
+      ),
       ListTile(
         title: Text('Text'),
         onTap: () => Navigator.pushNamed(context, '/text'),

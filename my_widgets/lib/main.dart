@@ -5,7 +5,9 @@ import 'screen/image.screen.dart';
 import 'screen/icon.screen.dart';
 import 'screen/time.screen.dart';
 import 'screen/button.screen.dart';
-import 'screen/Form.screen.dart';
+import 'screen/form.screen.dart';
+import 'screen/layout.screen.dart';
+import 'screen/container.screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,6 +25,8 @@ class MyApp extends StatelessWidget {
         '/icon': (context) => IconScreen(),
         '/button': (context) => ButtonScreen(),
         '/form': (context) => FormScreen(),
+        '/layout': (context) => LayoutScreen(),
+        '/container': (context) => ContainerScreen(),
       },
     );
   }

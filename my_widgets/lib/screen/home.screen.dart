@@ -38,6 +38,14 @@ class HomeScreen extends StatelessWidget {
         title: Text('Form'),
         onTap: () => Navigator.pushNamed(context, '/form'),
       ),
+      ListTile(
+        title: Text('Layout'),
+        onTap: () => Navigator.pushNamed(context, '/layout'),
+      ),
+      ListTile(
+        title: Text('Container'),
+        onTap: () => Navigator.pushNamed(context, '/container'),
+      ),
     ];
 
     return ListView(children: items);

@@ -16,7 +16,8 @@ class TextScreen extends StatelessWidget {
 
     var textWithAlgin = Text(
       "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-      textAlign: TextAlign.center,
+      textDirection: TextDirection.rtl,
+      textAlign: TextAlign.start,
       style: TextStyle(
         fontSize: 40.0,
       ),

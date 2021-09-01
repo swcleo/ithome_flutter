@@ -22,17 +22,43 @@ class ButtonScreen extends StatelessWidget {
     );
 
     var textButtonWithStyle = TextButton(
-      child: Text('textButtonWithStyle'),
+      child: Text('CustomStyle'),
       onPressed: () {},
       style: TextButton.styleFrom(
         primary: Colors.purple,
-        textStyle: TextStyle(fontSize: 30.0),
+        textStyle: TextStyle(
+          fontSize: 18.0,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+
+    var elevatedButtonWithIcon = ElevatedButton.icon(
+      icon: Icon(Icons.home),
+      label: Text("Home"),
+      onPressed: () {},
+      style: ElevatedButton.styleFrom(
+        primary: Colors.red,
+        shadowColor: Colors.orange,
+      ),
+    );
+
+    var outlinedButtonWithStyle = OutlinedButton(
+      child: Text('OutlinedButton'),
+      onPressed: () {},
+      style: OutlinedButton.styleFrom(
+        primary: Colors.black87,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(18.0),
+        ),
+        side: BorderSide(width: 2, color: Colors.green),
       ),
     );
 
     var iconButton = IconButton(
       icon: Icon(Icons.build_circle),
       iconSize: 30.0,
+      splashRadius: 20.0,
       onPressed: () {},
     );
 
@@ -45,6 +71,8 @@ class ButtonScreen extends StatelessWidget {
           elevtedButton,
           outlinedButton,
           textButtonWithStyle,
+          elevatedButtonWithIcon,
+          outlinedButtonWithStyle,
           iconButton
         ],
       ),

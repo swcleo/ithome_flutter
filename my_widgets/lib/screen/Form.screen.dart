@@ -8,16 +8,36 @@ class FormScreen extends StatefulWidget {
 }
 
 class _FormScreen extends State<FormScreen> {
-  TextEditingController nameController = TextEditingController();
-  String value = '';
-  String dropdownValue = 'Taiwan';
-  bool isSwitched = false;
-  bool isChecked = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final items = ["Taiwan", "Korean", "Japan"];
 
+  String value = '';
+  String dropdownValue = 'Taiwan';
+  bool isSwitched = false;
+  bool optionsA = false;
+  bool optionsB = false;
+  String? radioValue = "1";
+
+  TextEditingController nameController = TextEditingController();
+  TextEditingController searchController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    var textField = Container(
+      margin: EdgeInsets.all(20.0),
+      child: TextField(
+        controller: searchController,
+        decoration: InputDecoration(
+          hintText: 'Search',
+        ),
+        onChanged: (String text) {
+          setState(() {
+            value = "Search: $text";
+          });
+        },
+      ),
+    );
+
     var nameTextFiled = Container(
       margin: EdgeInsets.all(20.0),
       child: TextFormField(
@@ -71,8 +91,34 @@ class _FormScreen extends State<FormScreen> {
     );
 
     var inputValue = Container(
-      margin: EdgeInsets.all(20),
+      margin: EdgeInsets.all(5),
       child: Text(value),
+    );
+
+    var theRadio = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Radio<String>(
+          value: "1",
+          groupValue: radioValue,
+          onChanged: (value) {
+            setState(() {
+              radioValue = value;
+            });
+          },
+        ),
+        Text("選項一"),
+        Radio<String>(
+          value: "2",
+          groupValue: radioValue,
+          onChanged: (value) {
+            setState(() {
+              radioValue = value;
+            });
+          },
+        ),
+        Text("選項二"),
+      ],
     );
 
     var theSwitch = Switch(
@@ -86,14 +132,30 @@ class _FormScreen extends State<FormScreen> {
       activeColor: Colors.orangeAccent,
     );
 
-    var theCheckBox = Checkbox(
-      value: isChecked,
-      activeColor: Colors.red, //选中时的颜色
-      onChanged: (value) {
-        setState(() {
-          isChecked = value!;
-        });
-      },
+    var theCheckBox = Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Checkbox(
+          value: optionsA,
+          activeColor: Colors.red, //选中时的颜色
+          onChanged: (value) {
+            setState(() {
+              optionsA = value!;
+            });
+          },
+        ),
+        Text("A"),
+        Checkbox(
+          value: optionsB,
+          activeColor: Colors.red, //选中时的颜色
+          onChanged: (value) {
+            setState(() {
+              optionsB = value!;
+            });
+          },
+        ),
+        Text("B"),
+      ],
     );
 
     var theDropdownButton = DropdownButton(
@@ -113,46 +175,6 @@ class _FormScreen extends State<FormScreen> {
       }).toList(),
     );
 
-    var datePickButton = ElevatedButton(
-      onPressed: () async {
-        final result = await showDatePicker(
-          context: context,
-          initialDate: DateTime.now(),
-          firstDate: DateTime(2021, 01),
-          lastDate: DateTime(2021, 12),
-        );
-
-        print(result);
-      },
-      child: const Text('日期選擇器'),
-    );
-
-    var dateRangePickButton = ElevatedButton(
-      onPressed: () async {
-        final result = await showDateRangePicker(
-          context: context,
-          firstDate: DateTime(2021, 01),
-          lastDate: DateTime(2021, 12),
-        );
-
-        print(result);
-      },
-      child: const Text('日期區間選擇器'),
-    );
-
-    var timePickButton = ElevatedButton(
-      onPressed: () async {
-        final result = await showTimePicker(
-          context: context,
-          initialTime: TimeOfDay.now(),
-          initialEntryMode: TimePickerEntryMode.input,
-        );
-
-        print(result);
-      },
-      child: const Text('時間選擇器'),
-    );
-
     var submit = ElevatedButton(
       onPressed: () {
         if (_formKey.currentState!.validate()) {
@@ -161,23 +183,48 @@ class _FormScreen extends State<FormScreen> {
           );
         }
       },
-      child: const Text('Submit'),
+      child: const Text('送出'),
+    );
+
+    var reset = ElevatedButton(
+      style: ElevatedButton.styleFrom(primary: Colors.red),
+      onPressed: () {
+        _formKey.currentState!.reset();
+        searchController.clear();
+        nameController.clear();
+        setState(() {
+          value = "";
+          optionsA = false;
+          optionsB = false;
+          isSwitched = false;
+          radioValue = "1";
+          dropdownValue = "Taiwan";
+        });
+      },
+      child: const Text('重置'),
+    );
+
+    var buttons = Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        submit,
+        reset,
+      ],
     );
 
     var form = Form(
       key: _formKey,
       child: Column(
         children: [
+          textField,
           nameTextFiled,
           passwordTextFormField,
           inputValue,
           theSwitch,
           theCheckBox,
           theDropdownButton,
-          datePickButton,
-          dateRangePickButton,
-          timePickButton,
-          submit
+          theRadio,
+          buttons,
         ],
       ),
     );

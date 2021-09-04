@@ -88,12 +88,17 @@ class LayoutScreen extends StatelessWidget {
     );
 
     var theFlex = Container(
-      height: 100,
       width: 150,
-      margin: const EdgeInsets.all(5.0),
+      height: 145,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.blueAccent),
+      ),
       child: Flex(
         direction: Axis.vertical,
-        children: <Widget>[
+        children: [
+          Container(
+            child: Text("德國"),
+          ),
           Expanded(
             flex: 1,
             child: Container(
@@ -128,7 +133,8 @@ class LayoutScreen extends StatelessWidget {
       margin: const EdgeInsets.all(5.0),
       color: Colors.blue[300],
       child: Align(
-        alignment: Alignment(0.0, 0.0),
+        alignment: AlignmentDirectional.topCenter,
+        // alignment: Alignment(0.0, -1.0),
         child: square,
       ),
     );
@@ -188,7 +194,7 @@ class LayoutScreen extends StatelessWidget {
             left: 200.0,
             child: Column(children: [
               Text("right: 0.0"),
-              Text("botton: 50.0"),
+              Text("bottom: 50.0"),
             ]),
           ),
         ],

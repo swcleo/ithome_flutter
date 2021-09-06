@@ -201,20 +201,33 @@ class LayoutScreen extends StatelessWidget {
       ),
     );
 
+    Widget content = Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        theRow,
+        theColumn,
+        theWrap,
+        theFlex,
+        theAlignWithAlignment,
+        theAlignWithFractionalOffset,
+        theStack,
+      ],
+    );
+
+    var isScrollable = true;
+
+    if (isScrollable) {
+      content = Scrollbar(
+        isAlwaysShown: true,
+        child: SingleChildScrollView(
+          child: content,
+        ),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(title: const Text("Layout")),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          theRow,
-          theColumn,
-          theWrap,
-          theFlex,
-          theAlignWithAlignment,
-          theAlignWithFractionalOffset,
-          theStack,
-        ],
-      ),
+      body: content,
     );
   }
 }

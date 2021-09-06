@@ -8,7 +8,8 @@ import 'screen/button.screen.dart';
 import 'screen/form.screen.dart';
 import 'screen/layout.screen.dart';
 import 'screen/container.screen.dart';
-import 'screen/scroll.screen.dart';
+import 'screen/listview.screen.dart';
+import 'screen/gridview.screen.dart';
 import 'screen/datetimepicker.screen.dart';
 
 void main() => runApp(MyApp());
@@ -29,7 +30,8 @@ class MyApp extends StatelessWidget {
         '/form': (context) => FormScreen(),
         '/layout': (context) => LayoutScreen(),
         '/container': (context) => ContainerScreen(),
-        '/scroll': (context) => ScrollScreen(),
+        '/listview': (context) => ListViewScreen(),
+        '/gridview': (context) => GridViewScreen(),
         '/datetimepicker': (context) => DateTimePickerScreen(),
       },
     );

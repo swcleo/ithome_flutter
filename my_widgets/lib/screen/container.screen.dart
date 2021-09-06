@@ -57,8 +57,8 @@ class _ContainerScreen extends State<ContainerScreen> {
               width: 200.0,
               height: 150.0,
             ),
-            margin: const EdgeInsets.only(top: 20.0, bottom: 30.0),
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.all(10.0),
+            margin: const EdgeInsets.all(20.0),
             decoration: BoxDecoration(
               color: Color(0xFFFFE3D4),
               border: Border.all(

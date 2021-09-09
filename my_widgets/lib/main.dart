@@ -12,6 +12,7 @@ import 'screen/listview.screen.dart';
 import 'screen/gridview.screen.dart';
 import 'screen/sliver.screen.dart';
 import 'screen/datetimepicker.screen.dart';
+import 'screen/theme.screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,6 +21,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Welcome to Flutter',
+      theme: ThemeData(
+        primaryColor: Colors.green,
+        accentColor: Colors.yellow[300],
+        textTheme: const TextTheme(
+          headline6: TextStyle(fontSize: 24.0, fontStyle: FontStyle.italic),
+        ),
+      ),
       initialRoute: '/',
       routes: {
         '/': (context) => HomeScreen(),
@@ -35,6 +43,7 @@ class MyApp extends StatelessWidget {
         '/gridview': (context) => GridViewScreen(),
         '/datetimepicker': (context) => DateTimePickerScreen(),
         '/sliver': (context) => SliverScreen(),
+        '/theme': (context) => ThemeScreen(),
       },
     );
   }

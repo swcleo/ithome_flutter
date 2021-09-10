@@ -13,6 +13,7 @@ import 'screen/gridview.screen.dart';
 import 'screen/sliver.screen.dart';
 import 'screen/datetimepicker.screen.dart';
 import 'screen/theme.screen.dart';
+import 'screen/provider.screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
         '/datetimepicker': (context) => DateTimePickerScreen(),
         '/sliver': (context) => SliverScreen(),
         '/theme': (context) => ThemeScreen(),
+        '/provider': (context) => ProviderScreen(),
       },
     );
   }

@@ -14,6 +14,7 @@ import 'screen/sliver.screen.dart';
 import 'screen/datetimepicker.screen.dart';
 import 'screen/theme.screen.dart';
 import 'screen/provider.screen.dart';
+import 'screen/weather.screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -46,6 +47,7 @@ class MyApp extends StatelessWidget {
         '/sliver': (context) => SliverScreen(),
         '/theme': (context) => ThemeScreen(),
         '/provider': (context) => ProviderScreen(),
+        '/weather': (context) => WeatherScreen(),
       },
     );
   }

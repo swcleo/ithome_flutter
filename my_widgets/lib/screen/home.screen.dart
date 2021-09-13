@@ -70,6 +70,10 @@ class HomeScreen extends StatelessWidget {
         title: Text('Provider'),
         onTap: () => Navigator.pushNamed(context, '/provider'),
       ),
+      ListTile(
+        title: Text('Weather'),
+        onTap: () => Navigator.pushNamed(context, '/weather'),
+      ),
     ];
 
     return ListView(children: items);

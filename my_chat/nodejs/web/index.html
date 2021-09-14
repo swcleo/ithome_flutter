@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/immutable/4.0.0-rc.14/immutable.min.js"></script>
+  </head>
+
+  <style>
+    .chat {
+      height: 700px;
+      border-style: solid;
+      padding: 5px;
+      overflow: scroll;
+    }
+    .msg {
+      font-size: 16px;
+      margin: 5px;
+    }
+    .time {
+      color: grey;
+      margin: 0;
+      font-size: 12px;
+    }
+  </style>
+
+  <body>
+    <h3>WebSocket Chat</h3>
+    <div id="app">
+      <div class="chat">
+        <div class="msg" v-for="l in list">
+          <div>{{ l.msg }}</div>
+          <div class="time">{{ l.time }}</div>
+        </div>
+      </div>
+      <input
+        placeholder="Aa"
+        v-model="message"
+      />
+      <button v-on:click="send">送出</button>
+    </div>
+  </body>
+
+  <script>
+    (function () {
+      const url = "ws://localhost:8000/?name=web";
+
+      new Vue({
+        el: "#app",
+        data: {
+          message: "",
+          list: Immutable.List(),
+        },
+        mounted() {
+          const socket = new WebSocket(url);
+
+          socket.onopen = () => {
+            connected = true;
+          };
+
+          socket.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+            console.log(data);
+            const text =
+            this.list = this.list.push({
+              msg: `${data.from} @ ${data.msg}`,
+              time:new Date(data.time).toISOString()
+            });
+          };
+
+          socket.onclose = () => {
+            console.log("[onclose]");
+            connected = false;
+          };
+
+          socket.onerror = (error) => {
+            console.log(`[onerror] ${error.message}`);
+          };
+
+          this.socket = socket;
+        },
+        methods: {
+          send() {
+            if (this.message) {
+              this.socket.send(this.message);
+              this.message = "";
+            }
+          },
+        },
+      });
+    })();
+  </script>
+</html>

@@ -16,7 +16,7 @@ class WeatherForecastWidget extends StatefulWidget {
 class _WeatherForecastWidgetState extends State<WeatherForecastWidget> {
   City city;
   String description = "";
-  String wx = "";
+  int wx = 0;
 
   late List<String> _districts;
   late String _selected;
@@ -48,12 +48,14 @@ class _WeatherForecastWidgetState extends State<WeatherForecastWidget> {
     var weather = Weather.fromJson(data);
 
     var record = weather.records.first;
-    var description = record.element("WeatherDescription").value;
-    var wx = record.element("Wx").value;
+
+    var description = record.element("WeatherDescription").now.values[0].value;
+
+    var wx = record.element("Wx").now.values[1].value;
 
     setState(() {
       this.description = description;
-      this.wx = wx;
+      this.wx = int.parse(wx);
     });
   }
 

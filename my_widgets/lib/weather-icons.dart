@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:weather_icons/weather_icons.dart';
 
-const WeatherIconsMap = {
-  '多雲短暫陣雨或雷雨': WeatherIcons.day_sleet_storm,
-  '多雲短暫雨': WeatherIcons.day_sleet,
-  '多雲': WeatherIcons.cloud,
-  '陰': WeatherIcons.cloudy,
-  '晴': WeatherIcons.day_sunny,
+// https://opendata.cwb.gov.tw/opendatadoc/MFC/D0047.pdf
+// 天氣現狀況
+// 1~42
+
+var icons = {
+  0: Icons.autorenew,
+  15: WeatherIcons.storm_showers,
+  22: WeatherIcons.storm_showers
 };
 
-Icon weatherIcons(String type) {
+Icon weatherIcons(int type) {
   var icon;
-  // print(type);
 
-  if (WeatherIconsMap[type] != null) {
-    icon = WeatherIconsMap[type];
+  // 晴
+  if (icons[type] != null) {
+    icon = icons[type]!;
   } else {
+    print("未定義天氣icon 代碼 $type");
     icon = Icons.autorenew;
   }
 

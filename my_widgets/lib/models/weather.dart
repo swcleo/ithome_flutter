@@ -122,7 +122,7 @@ class WeatherElement extends Object {
 
   Map<String, dynamic> toJson() => _$WeatherElementToJson(this);
 
-  get value => time![0].elementValue![0].value;
+  Time get now => time![0];
 }
 
 @JsonSerializable()
@@ -146,6 +146,8 @@ class Time extends Object {
       _$TimeFromJson(srcJson);
 
   Map<String, dynamic> toJson() => _$TimeToJson(this);
+
+  List<ElementValue> get values => elementValue!;
 }
 
 @JsonSerializable()

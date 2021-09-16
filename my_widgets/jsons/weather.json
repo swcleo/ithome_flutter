@@ -1,0 +1,33 @@
+{
+    "success": "true",
+    "records": {
+        "locations": [{
+            "datasetDescription": "臺灣各縣市鄉鎮未來3天(72小時)逐3小時天氣預報",
+            "locationsName": "臺北市",
+            "dataid": "D0047-061",
+            "location": [{
+                "locationName": "中正區",
+                "geocode": "63000050",
+                "lat": "25.046058",
+                "lon": "121.516565",
+                "weatherElement": [{
+                    "elementName": "Wx",
+                    "description": "天氣現象",
+                    "time": [{
+                        "startTime": "2021-09-16 06:00:00",
+                        "endTime": "2021-09-16 09:00:00",
+                        "elementValue": [{
+                                "value": "短暫陣雨或雷雨",
+                                "measures": "自定義 Wx 文字"
+                            },
+                            {
+                                "value": "15",
+                                "measures": "自定義 Wx 單位"
+                            }
+                        ]
+                    }]
+                }]
+            }]
+        }]
+    }
+}

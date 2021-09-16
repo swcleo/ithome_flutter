@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import '../api/wether.api.dart';
-import '../districts.dart';
-import '../weather-element.dart';
+import '../models/districts.dart';
+import '../models/weather.dart';
+import '../weather-icons.dart';
 
 class WeatherForecastWidget extends StatefulWidget {
   final City city;
@@ -16,8 +17,6 @@ class _WeatherForecastWidgetState extends State<WeatherForecastWidget> {
   City city;
   String description = "";
   String wx = "";
-
-  WeatherModel weather = WeatherModel();
 
   late List<String> _districts;
   late String _selected;
@@ -45,11 +44,16 @@ class _WeatherForecastWidgetState extends State<WeatherForecastWidget> {
     var params = {"locationName": this._selected};
     var data = await WetherAPI().fetch(service, parameters: params);
 
-    weather = WeatherModel.fromJson(data);
+    // json_serializable
+    var weather = Weather.fromJson(data);
+
+    var record = weather.records.first;
+    var description = record.element("WeatherDescription").value;
+    var wx = record.element("Wx").value;
 
     setState(() {
-      this.description = weather.description;
-      this.wx = weather.wx;
+      this.description = description;
+      this.wx = wx;
     });
   }
 

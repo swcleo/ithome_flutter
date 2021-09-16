@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
       title: 'Welcome to Flutter',
       theme: ThemeData(
         primaryColor: Colors.green,
+        // ignore: deprecated_member_use
         accentColor: Colors.yellow[300],
         textTheme: const TextTheme(
           headline6: TextStyle(fontSize: 24.0, fontStyle: FontStyle.italic),

@@ -88,6 +88,7 @@ class ThemeScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
+            // ignore: deprecated_member_use
             color: Theme.of(context).accentColor,
             child: Text(
               '使用來自 MaterialApp 設定的 ThemeData',

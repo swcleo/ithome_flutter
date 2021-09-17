@@ -16,10 +16,12 @@
       padding: 5px;
       overflow: scroll;
     }
+
     .msg {
       font-size: 16px;
       margin: 5px;
     }
+
     .time {
       color: grey;
       margin: 0;
@@ -32,21 +34,20 @@
     <div id="app">
       <div class="chat">
         <div class="msg" v-for="l in list">
-          <div>{{ l.msg }}</div>
-          <div class="time">{{ l.time }}</div>
+          
+          <div>{{ l.msg }}</div>
+          
+          <div class="time">{{ l.time }}</div>
         </div>
       </div>
-      <input
-        placeholder="Aa"
-        v-model="message"
-      />
+      <input placeholder="Aa" v-model="message" />
       <button v-on:click="send">送出</button>
     </div>
   </body>
 
   <script>
     (function () {
-      const url = "ws://localhost:8000/?name=web";
+      const url = "ws://localhost:8000/?token=web";
 
       new Vue({
         el: "#app",
@@ -64,11 +65,13 @@
           socket.onmessage = (event) => {
             const data = JSON.parse(event.data);
             console.log(data);
-            const text =
-            this.list = this.list.push({
-              msg: `${data.from} @ ${data.msg}`,
-              time:new Date(data.time).toISOString()
-            });
+
+            if (data.eventName === "chat:msg") {
+              this.list = this.list.push({
+                msg: `${data.by} @ ${data.msg}`,
+                time: data.time.toString(),
+              });
+            }
           };
 
           socket.onclose = () => {
@@ -85,7 +88,11 @@
         methods: {
           send() {
             if (this.message) {
-              this.socket.send(this.message);
+              const data = {
+                eventName: "chat:send",
+                data: this.message,
+              };
+              this.socket.send(JSON.stringify(data));
               this.message = "";
             }
           },

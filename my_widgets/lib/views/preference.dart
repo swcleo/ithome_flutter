@@ -42,7 +42,7 @@ class _PreferenceState extends State<PreferenceScreen> {
                   border: OutlineInputBorder(),
                   labelText: '姓氏',
                 ),
-                controller: vm.firstNameController,
+                controller: vm.firstName,
               ),
             ),
             Container(
@@ -52,7 +52,7 @@ class _PreferenceState extends State<PreferenceScreen> {
                   border: OutlineInputBorder(),
                   labelText: '名字',
                 ),
-                controller: vm.lastNameController,
+                controller: vm.lastName,
               ),
             ),
             Container(

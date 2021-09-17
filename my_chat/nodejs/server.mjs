@@ -1,6 +1,9 @@
 import WebSocket, { WebSocketServer } from "ws";
+import { UniqueID } from "nodejs-snowflake";
 import { createServer } from "http";
 import url from "url";
+
+const uid = new UniqueID();
 
 const server = createServer();
 
@@ -17,24 +20,39 @@ class User {
 function authenticate(request, callback) {
   const { query } = url.parse(request.url, true);
 
-  if (!query.name) {
-    callback(new Error("name is no defined"));
+  if (!query.token) {
+    // 身分驗證
+    callback(new Error("token is no defined"));
     return;
   }
 
-  callback(null, new User(query.name));
+  callback(null, new User(query.token));
 }
 
 wss.on("connection", function connection(ws, request, user) {
   ws.on("message", function message(msg) {
-    console.log(`Received message ${msg} from user ${user.name}`);
+    console.log(`Received message from user ${user.name}`);
 
-    wss.clients.forEach(function each(client) {
-      if (client.readyState === WebSocket.OPEN) {
-        const obj = { from: user.name, msg: msg.toString(), time: Date.now() };
-        client.send(JSON.stringify(obj));
-      }
-    });
+    var data = msg.toString();
+
+    var json
+
+    try {
+      json = JSON.parse(data);
+    } catch (e) {
+      console.error(e.toString());
+      json = {};
+    }
+
+    if (json.eventName === "chat:send") {
+      const obj = { eventName: "chat:msg", mid: uid.getUniqueID(), by: user.name, msg: json.data, time: Date.now() };
+
+      wss.clients.forEach(function each(client) {
+        if (client.readyState === WebSocket.OPEN) {
+          client.send(JSON.stringify(obj));
+        }
+      });
+    }
   });
 });
 

@@ -12,6 +12,10 @@ class PreferenceViewModle with ChangeNotifier {
 
   bool _addFriend = false;
 
+  get firstName => firstNameController.text;
+
+  get lastName => lastNameController.text;
+
   set addFriend(bool value) {
     _addFriend = value;
     notifyListeners();

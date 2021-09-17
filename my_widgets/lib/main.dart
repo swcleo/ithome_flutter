@@ -15,6 +15,7 @@ import 'views/datetimepicker.dart';
 import 'views/theme.dart';
 import 'views/provider.dart';
 import 'views/weather.dart';
+import 'views/preference.dart';
 
 void main() => runApp(MyApp());
 
@@ -49,6 +50,7 @@ class MyApp extends StatelessWidget {
         '/theme': (context) => ThemeScreen(),
         '/provider': (context) => ProviderScreen(),
         '/weather': (context) => WeatherScreen(),
+        '/preference': (context) => PreferenceScreen(),
       },
     );
   }

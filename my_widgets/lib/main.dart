@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'screen/home.screen.dart';
-import 'screen/text.screen.dart';
-import 'screen/image.screen.dart';
-import 'screen/icon.screen.dart';
-import 'screen/time.screen.dart';
-import 'screen/button.screen.dart';
-import 'screen/form.screen.dart';
-import 'screen/layout.screen.dart';
-import 'screen/container.screen.dart';
-import 'screen/listview.screen.dart';
-import 'screen/gridview.screen.dart';
-import 'screen/sliver.screen.dart';
-import 'screen/datetimepicker.screen.dart';
-import 'screen/theme.screen.dart';
-import 'screen/provider.screen.dart';
-import 'screen/weather.screen.dart';
+import 'views/home.dart';
+import 'views/text.dart';
+import 'views/image.dart';
+import 'views/icon.dart';
+import 'views/time.dart';
+import 'views/button.dart';
+import 'views/form.dart';
+import 'views/layout.dart';
+import 'views/container.dart';
+import 'views/listview.dart';
+import 'views/gridview.dart';
+import 'views/sliver.dart';
+import 'views/datetimepicker.dart';
+import 'views/theme.dart';
+import 'views/provider.dart';
+import 'views/weather.dart';
 
 void main() => runApp(MyApp());
 

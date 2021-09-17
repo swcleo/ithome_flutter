@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/time.model.dart';
+import '../models/time.dart';
 
 class TimeScreen extends StatelessWidget {
   @override

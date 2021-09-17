@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../api/wether.api.dart';
+import '../api/wether.dart';
 import '../models/districts.dart';
 import '../models/weather.dart';
-import '../weather-icons.dart';
+import 'helpers/weather_icons.dart';
 
 class WeatherForecastWidget extends StatefulWidget {
   final City city;
@@ -45,7 +45,7 @@ class _WeatherForecastWidgetState extends State<WeatherForecastWidget> {
     var data = await WetherAPI().fetch(service, parameters: params);
 
     // json_serializable
-    var weather = Weather.fromJson(data);
+    var weather = WeatherModel.fromJson(data);
 
     var record = weather.records.first;
 

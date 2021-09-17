@@ -3,19 +3,19 @@ import 'package:json_annotation/json_annotation.dart';
 part 'weather.g.dart';
 
 @JsonSerializable()
-class Weather extends Object {
+class WeatherModel extends Object {
   @JsonKey(name: 'success')
   String success;
 
   @JsonKey(name: 'records')
   Records records;
 
-  Weather(
+  WeatherModel(
     this.success,
     this.records,
   );
 
-  factory Weather.fromJson(Map<String, dynamic> srcJson) =>
+  factory WeatherModel.fromJson(Map<String, dynamic> srcJson) =>
       _$WeatherFromJson(srcJson);
 
   Map<String, dynamic> toJson() => _$WeatherToJson(this);

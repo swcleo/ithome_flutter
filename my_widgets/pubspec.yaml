@@ -33,6 +33,7 @@ dependencies:
   dio: ^4.0.0
   weather_icons: ^3.0.0
   json_annotation: ^4.1.0
+  shared_preferences: ^2.0.7
 
 
 dev_dependencies:

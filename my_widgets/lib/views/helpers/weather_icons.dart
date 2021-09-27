@@ -7,6 +7,8 @@ import 'package:weather_icons/weather_icons.dart';
 
 var icons = {
   0: Icons.autorenew,
+  1: WeatherIcons.day_sunny,
+  2: WeatherIcons.day_sunny_overcast,
   15: WeatherIcons.storm_showers,
   22: WeatherIcons.storm_showers
 };

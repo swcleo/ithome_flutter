@@ -42,6 +42,7 @@ class _WeatherForecastWidgetState extends State<WeatherForecastWidget> {
     }
 
     var params = {"locationName": this._selected};
+
     var data = await WetherAPI().fetch(service, parameters: params);
 
     // json_serializable

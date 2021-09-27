@@ -16,11 +16,10 @@ class ChatViewModel {
   final List<Message> data = [];
 
   ChatViewModel() {
-    connection.stream.listen((data) {
-      if (data["eventName"] == "chat:msg") {
-        _addData(Message.fromJson(data));
-      }
-    });
+    connection.stream
+        .where((data) => data["eventName"] == "chat:msg")
+        .map((data) => Message.fromJson(data))
+        .listen(_addData);
   }
 
   void _addData(Message msg) async {

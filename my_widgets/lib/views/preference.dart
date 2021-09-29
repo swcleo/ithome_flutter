@@ -38,12 +38,11 @@ class _PreferenceState extends State<PreferenceScreen> {
             Container(
               margin: EdgeInsets.all(20.0),
               child: TextFormField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: '姓氏',
-                ),
-                controller: vm.firstName,
-              ),
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: '姓氏',
+                  ),
+                  controller: vm.firstNameController),
             ),
             Container(
               margin: EdgeInsets.all(20.0),
@@ -52,7 +51,7 @@ class _PreferenceState extends State<PreferenceScreen> {
                   border: OutlineInputBorder(),
                   labelText: '名字',
                 ),
-                controller: vm.lastName,
+                controller: vm.lastNameController,
               ),
             ),
             Container(

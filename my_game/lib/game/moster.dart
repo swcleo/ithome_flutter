@@ -9,7 +9,7 @@ class Moster extends SpriteComponent with Hitbox, Collidable {
   bool _up = true;
   bool _down = false;
   final double _jumpHeight = 150;
-  final double ySpeed = 5;
+  final double ySpeed = 300;
   final double xSpeed = 200;
   late final double _originY;
   final JoystickComponent joystick;
@@ -31,7 +31,7 @@ class Moster extends SpriteComponent with Hitbox, Collidable {
     super.update(dt);
 
     if (_up) {
-      y -= ySpeed;
+      y -= dt * ySpeed;
 
       if (y < _originY - _jumpHeight) {
         _up = false;
@@ -40,7 +40,7 @@ class Moster extends SpriteComponent with Hitbox, Collidable {
     }
 
     if (_down) {
-      y += ySpeed;
+      y += dt * ySpeed;
       if (y > _originY) {
         _up = true;
         _down = false;

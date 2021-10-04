@@ -34,7 +34,8 @@ class Star extends SpriteComponent with Hitbox, Collidable {
   @override
   void onCollision(Set<Vector2> intersectionPoints, Collidable other) {
     super.onCollision(intersectionPoints, other);
-    if (other is Moster) {}
-    _collision = true;
+    if (other is Moster) {
+      _collision = true;
+    }
   }
 }
